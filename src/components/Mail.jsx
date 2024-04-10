@@ -3,7 +3,7 @@ import Skeleton from "./Skeleton";
 
 function Mail({ threadId }) {
 	const [singleMail, setSingleMail] = useState({});
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchMail = async () => {
@@ -30,7 +30,7 @@ function Mail({ threadId }) {
 			}
 		};
 
-		fetchMail();
+		// fetchMail();
 	}, [threadId]);
 
 	return (
@@ -42,6 +42,7 @@ function Mail({ threadId }) {
 					<h2>Subject : {singleMail.subject}</h2>
 					<h3>From : {singleMail.fromEmail}</h3>
 					<h3>To : {singleMail.toEmail}</h3>
+					<h3>Thread Id : {threadId}</h3>
 					<p>Body : {singleMail.body}</p>
 				</div>
 			)}
