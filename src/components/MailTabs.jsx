@@ -18,7 +18,7 @@ function MailTabs({ mails }) {
 								key={mail.id}
 								onClick={() => handleClick(mail.threadId)}
 							>
-								<div className="px-2">
+								<div className="px-2 hover:cursor-pointer hover:bg-gray-200">
 									<h3 className="text-lg">{mail.fromName}</h3>
 									<p className="text-gray-400">
 										{mail.subject.substring(0, 20)}...

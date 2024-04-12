@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "./Skeleton";
+import LogoutModal from "./Auth/Modal/LogoutModal";
+import ReplyModal from "./Auth/Modal/ReplyModal"
 
 function Mail({ threadId }) {
 	const [singleMail, setSingleMail] = useState({});
@@ -44,6 +46,8 @@ function Mail({ threadId }) {
 					<h3>To : {singleMail.toEmail}</h3>
 					<h3>Thread Id : {threadId}</h3>
 					<p>Body : {singleMail.body}</p>
+          <LogoutModal/>
+					<ReplyModal/>
 				</div>
 			)}
 		</>
