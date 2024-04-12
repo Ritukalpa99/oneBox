@@ -11,24 +11,7 @@ import "./index.css";
 import { AuthProvider } from "./store/auth.jsx";
 import Home from "./components/Home.jsx";
 import Signup from "./components/Auth/Signup.jsx";
-import Layout from "./components/Layout.jsx";
 
-// const router = createBrowserRouter([
-//   {
-//     path : "/",
-//     element: <App />,
-//     children : [
-//       {
-//         path : "home",
-//         element : <Home />
-//       },
-//       {
-//         path : "signup",
-//         element : <Signup />
-//       }
-//     ]
-//   }
-// ])
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route
@@ -39,7 +22,10 @@ const router = createBrowserRouter(
 				path="home"
 				element={<Home />}
 			/>
-			<Route path='signup' element={<Signup/>}/>
+			<Route
+				path="signup"
+				element={<Signup />}
+			/>
 		</Route>
 	)
 );

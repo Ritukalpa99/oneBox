@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./store/auth";
 
 function App() {
-	// const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const navigate = useNavigate();
 	const { isLoggedIn, login, logout } = useAuth();
 	// useEffect(() => {
@@ -22,9 +21,7 @@ function App() {
 	}, []);
 	return (
 		<>
-			{/* {!isLoggedIn && <Signup/>} */}
-			{/* {isLoggedIn && <Outlet />} */}
-      <Outlet />
+			<Outlet />
 		</>
 	);
 }

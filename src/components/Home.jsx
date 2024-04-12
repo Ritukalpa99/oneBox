@@ -6,7 +6,6 @@ function Home() {
 		<>
 			<h1>All Mails</h1>
 			<Sidebar />
-      
 		</>
 	);
 }

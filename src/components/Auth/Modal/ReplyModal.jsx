@@ -25,13 +25,17 @@ export default function ReplyModal() {
 		setEmail("");
 	}
 
+	const handleSubmit = () => {
+		setOpenModal(false);
+		alert("form submitted");
+	};
 	return (
 		<>
 			<Button
-				className="bg-pink-400"
+				className="bg-green-400"
 				onClick={() => setOpenModal(true)}
 			>
-				Toggle modal
+				Reply
 			</Button>
 			<Modal
 				show={openModal}
@@ -41,60 +45,73 @@ export default function ReplyModal() {
 			>
 				<Modal.Header />
 				<Modal.Body>
-					<div className="space-y-6">
-						<h3 className="text-xl font-medium text-gray-900 dark:text-white">
-							Sign in to our platform
-						</h3>
-						<div>
-							<div className="mb-2 block">
-								<Label
-									htmlFor="email"
-									value="Your email"
+					<form onSubmit={handleSubmit}>
+						<div className="space-y-6">
+							<div>
+								<div className="mb-2 block">
+									<Label
+										htmlFor="email"
+										value="To"
+									/>
+								</div>
+								<TextInput
+									id="email"
+									placeholder="name@company.com"
+									value={email}
+									onChange={(event) => setEmail(event.target.value)}
+									required
 								/>
 							</div>
-							<TextInput
-								id="email"
-								placeholder="name@company.com"
-								value={email}
-								onChange={(event) => setEmail(event.target.value)}
-								required
-							/>
-						</div>
-						<div>
-							<div className="mb-2 block">
-								<Label
-									htmlFor="password"
-									value="Your password"
+							<div>
+								<div className="mb-2 block">
+									<Label
+										htmlFor="email"
+										value="From"
+									/>
+								</div>
+								<TextInput
+									id="email"
+									placeholder="name@company.com"
+									value={email}
+									onChange={(event) => setEmail(event.target.value)}
+									required
 								/>
 							</div>
-							<TextInput
-								id="password"
-								type="password"
-								required
-							/>
-						</div>
-						<div className="flex justify-between">
-							<div className="flex items-center gap-2">
-								<Checkbox id="remember" />
-								<Label htmlFor="remember">Remember me</Label>
+							<div>
+								<div className="mb-2 block">
+									<Label
+										htmlFor="subject"
+										value="Subject"
+									/>
+								</div>
+								<TextInput
+									id="subject"
+									type="text"
+									required
+								/>
 							</div>
-							<a
-								href="#"
-								className="text-sm text-cyan-700 hover:underline dark:text-cyan-500"
+							<div className="max-w-md">
+								<div className="mb-2 block">
+									<Label
+										htmlFor="comment"
+										value="Body"
+									/>
+								</div>
+								<Textarea
+									id="comment"
+									placeholder="Leave a reply..."
+									required
+									rows={4}
+								/>
+							</div>
+							<Button
+								className="bg-green-500"
+								type="submit"
 							>
-								Lost Password?
-							</a>
+								Submit
+							</Button>
 						</div>
-						<div className="w-full">
-							<Button>Log in to your account</Button>
-						</div>
-						<div className="max-w-md">
-      <div className="mb-2 block">
-        <Label htmlFor="comment" value="Your message" />
-      </div>
-      <Textarea id="comment" placeholder="Leave a comment..." required rows={4} />
-    </div>
-					</div>
+					</form>
 				</Modal.Body>
 			</Modal>
 		</>
