@@ -10,7 +10,8 @@ import {
 import "./index.css";
 import { AuthProvider } from "./store/auth.jsx";
 import Home from "./components/Home.jsx";
-import Signup from "./components/Auth/Signup.jsx";
+// import Signup from "./components/Auth/Signup.jsx";
+import SignupComp from "./components/Auth/SignupComp.jsx";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -24,7 +25,7 @@ const router = createBrowserRouter(
 			/>
 			<Route
 				path="signup"
-				element={<Signup />}
+				element={<SignupComp />}
 			/>
 		</Route>
 	)

@@ -6,7 +6,6 @@ function MailTabs({ mails }) {
 	const [mailData, setMailData] = useState({});
 	const handleClick = (mail) => {
 		setClicked(true);
-		console.log(mail);
 		setMailData(mail);
 	};
 	return (

@@ -12,7 +12,7 @@ function App() {
 		if (!isLoggedIn) {
 			navigate("/signup");
 		} else {
-			navigate('/home')
+			navigate("/home");
 		}
 	}, [navigate, isLoggedIn]);
 
@@ -20,7 +20,7 @@ function App() {
 		if (JSON.parse(localStorage.getItem("UserId"))) {
 			login();
 		}
-	}, []);
+	}, [login]);
 	return (
 		<>
 			<Outlet />

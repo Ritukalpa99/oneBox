@@ -14,20 +14,35 @@ import {
 	ToggleSwitch,
 } from "flowbite-react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function ReplyModal() {
+export default function ReplyModal({ data }) {
 	const [openModal, setOpenModal] = useState(false);
-	const [email, setEmail] = useState("");
+	const [toEmail, setToEmail] = useState(data.fromEmail);
+	const [fromEmail, setFromEmail] = useState("");
+	const [subject, setSubject] = useState("");
+	const [body, setBody] = useState("");
 
 	function onCloseModal() {
 		setOpenModal(false);
-		setEmail("");
+		setToEmail("");
+		setFromEmail("");
+		setSubject("");
+		setBody("");
 	}
 
+	useEffect(() => {
+		setToEmail(data.fromEmail);
+	}, [data.fromEmail]);
+
 	const handleSubmit = () => {
+		event.preventDefault();
 		setOpenModal(false);
+		onCloseModal();
 		alert("form submitted");
+		const data = {
+
+		}
 	};
 	return (
 		<>
@@ -57,8 +72,8 @@ export default function ReplyModal() {
 								<TextInput
 									id="email"
 									placeholder="name@company.com"
-									value={email}
-									onChange={(event) => setEmail(event.target.value)}
+									value={toEmail}
+									onChange={(event) => setToEmail(event.target.value)}
 									required
 								/>
 							</div>
@@ -72,8 +87,8 @@ export default function ReplyModal() {
 								<TextInput
 									id="email"
 									placeholder="name@company.com"
-									value={email}
-									onChange={(event) => setEmail(event.target.value)}
+									value={fromEmail}
+									onChange={(event) => setFromEmail(event.target.value)}
 									required
 								/>
 							</div>
@@ -88,6 +103,7 @@ export default function ReplyModal() {
 									id="subject"
 									type="text"
 									required
+									onChange={(e) => setSubject(e.target.value)}
 								/>
 							</div>
 							<div className="max-w-md">
@@ -102,6 +118,7 @@ export default function ReplyModal() {
 									placeholder="Leave a reply..."
 									required
 									rows={4}
+									onChange={(e) => setBody(e.target.value)}
 								/>
 							</div>
 							<Button

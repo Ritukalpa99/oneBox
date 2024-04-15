@@ -8,27 +8,26 @@ function Sidebar() {
 		status: 200,
 		data: [
 			{
-				id: 3,
-				fromName: "Shaw Adley",
-				fromEmail: "shaw@getmemeetings.com",
-				toName: "",
-				toEmail: "mitrajit2022@gmail.com",
+				id: 2,
+				fromName: "Emma Smith",
+				fromEmail: "emma@example.com",
+				toName: "Bob",
+				toEmail: "bob@example.com",
 				cc: null,
 				bcc: null,
-				threadId: 1,
-				messageId: "<a5dcWbm1ac5e46d38746648c3e2f6d2c@getmemeetings.com>",
-				inReplyTo: "<4a5cWemdbfda475fabaf856ef5e806a7@gmail.com>",
-				references: "<4a5cWemdbfda475fabaf856ef5e806a7@gmail.com>",
-				subject:
-					"Shaw - following up on our meeting last week... | 7ZG2ZTV 6KG634E",
-				body: "<p>Hi Mitrajit,</p><p>Just wondering if you&rsquo;re still interested.</p><p>Regards,<br/>Shaw Adley</p><p>6KG634E practicecowboy</p>",
+				threadId: 2,
+				messageId: "<5678efgh@example.com>",
+				inReplyTo: null,
+				references: null,
+				subject: "Meeting Reminder",
+				body: "<p>Hi Bob, Don't forget our meeting tomorrow at 10 AM.</p>",
 				isRead: true,
 				folder: "INBOX",
-				uid: 594,
-				sentAt: "2023-11-23T04:08:45.000Z",
+				uid: 124,
+				sentAt: "2024-04-11T15:00:00.000Z",
 				archivedAt: null,
-				createdAt: "2023-11-23T07:38:46.000Z",
-				updatedAt: "2023-11-23T07:38:46.000Z",
+				createdAt: "2024-04-11T15:05:00.000Z",
+				updatedAt: "2024-04-11T15:05:00.000Z",
 				deletedAt: null,
 			},
 			{
@@ -39,7 +38,7 @@ function Sidebar() {
 				toEmail: "mitrajit2022@gmail.com",
 				cc: null,
 				bcc: null,
-				threadId: 2,
+				threadId: 4,
 				messageId: "<a5dcWbm1ac5e46d38746648c3e2f6d2c@getmemeetings.com>",
 				inReplyTo: "<4a5cWemdbfda475fabaf856ef5e806a7@gmail.com>",
 				references: "<4a5cWemdbfda475fabaf856ef5e806a7@gmail.com>",
@@ -77,6 +76,52 @@ function Sidebar() {
 				updatedAt: "2024-04-10T10:05:00.000Z",
 				deletedAt: null,
 			},
+			{
+				id: 3,
+				fromName: "Sarah Johnson",
+				fromEmail: "sarah@example.com",
+				toName: "David",
+				toEmail: "david@example.com",
+				cc: null,
+				bcc: null,
+				threadId: 3,
+				messageId: "<abcd1234@example.com>",
+				inReplyTo: null,
+				references: null,
+				subject: "Project Update",
+				body: "<p>Hi David, Here's the latest update on the project.</p>",
+				isRead: false,
+				folder: "INBOX",
+				uid: 125,
+				sentAt: "2024-04-12T09:30:00.000Z",
+				archivedAt: null,
+				createdAt: "2024-04-12T09:35:00.000Z",
+				updatedAt: "2024-04-12T09:35:00.000Z",
+				deletedAt: null,
+			},
+			{
+				id: 5,
+				fromName: "Alexandra Lee",
+				fromEmail: "alexandra@example.com",
+				toName: "Chris",
+				toEmail: "chris@example.com",
+				cc: null,
+				bcc: null,
+				threadId: 5,
+				messageId: "<ijkl9012@example.com>",
+				inReplyTo: null,
+				references: null,
+				subject: "Upcoming Event",
+				body: "<p>Hi Chris, Just a reminder about the upcoming event next week.</p>",
+				isRead: false,
+				folder: "INBOX",
+				uid: 127,
+				sentAt: "2024-04-12T11:00:00.000Z",
+				archivedAt: null,
+				createdAt: "2024-04-12T11:05:00.000Z",
+				updatedAt: "2024-04-12T11:05:00.000Z",
+				deletedAt: null,
+			},
 		],
 	};
 	const [mails, setMails] = useState(DUMMY_DATA.data);
@@ -85,9 +130,9 @@ function Sidebar() {
 	const [darkMode, setDarkMode] = useState(false);
 
 	const handleLogout = () => {
-		console.log('lockout clicked');
+		console.log("lockout clicked");
 		setOpenModal(true);
-	}
+	};
 	useEffect(() => {
 		document.querySelector("html").classList.remove("light", "dark");
 		document.querySelector("html").classList.add(darkMode ? "dark" : "light");
@@ -301,10 +346,7 @@ function Sidebar() {
 							</a>
 						</li>
 						<li onClick={handleLogout}>
-							<a
-
-								className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 hover:cursor-pointer dark:hover:bg-gray-700 group"
-							>
+							<a className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 hover:cursor-pointer dark:hover:bg-gray-700 group">
 								<svg
 									className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 									aria-hidden="true"
@@ -330,7 +372,10 @@ function Sidebar() {
 			<div className="p-4 sm:ml-64 mt-14">
 				{/* <MailTab mails={mails}/> */}
 				<MailTabs mails={mails} />
-				<LogoutModal openModal={openModal} setOpenModal={setOpenModal}/> 
+				<LogoutModal
+					openModal={openModal}
+					setOpenModal={setOpenModal}
+				/>
 			</div>
 		</>
 	);

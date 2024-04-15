@@ -3,14 +3,31 @@ import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
-export default function DeleteModal() {
+export default function DeleteModal({ threadId }) {
 	const [openModal, setOpenModal] = useState(false);
-	const navigate = useNavigate();
+
+	const deleteMail = async () => {
+		const token = JSON.parse(localStorage.getItem("UserId"));
+		try {
+			const res = await fetch(`${import.meta.env.VITE_DELETE_MAIL}:${threadId}`, {
+				method: "DELETE",
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			if (!res.ok) {
+				throw new Error("Error is response");
+			}
+			const data = await res.json();
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	const handleDelete = () => {
+		// deleteMail();
+		alert(`${threadId} deleted`)
 		setOpenModal(false);
-		localStorage.removeItem("UserId");
-		navigate("/signup");
 	};
 	return (
 		<>
