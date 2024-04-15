@@ -3,10 +3,11 @@ import Mail from "./Mail";
 
 function MailTabs({ mails }) {
 	const [clicked, setClicked] = useState(false);
-	const [id, setId] = useState("");
-	const handleClick = (tId) => {
+	const [mailData, setMailData] = useState({});
+	const handleClick = (mail) => {
 		setClicked(true);
-		setId(tId);
+		console.log(mail);
+		setMailData(mail);
 	};
 	return (
 		<>
@@ -16,7 +17,7 @@ function MailTabs({ mails }) {
 						{mails?.map((mail) => (
 							<li
 								key={mail.id}
-								onClick={() => handleClick(mail.threadId)}
+								onClick={() => handleClick(mail)}
 							>
 								<div className="px-2 hover:cursor-pointer hover:bg-gray-200">
 									<h3 className="text-lg">{mail.fromName}</h3>
@@ -35,7 +36,7 @@ function MailTabs({ mails }) {
 							<h3>Select a mail</h3>
 						</div>
 					) : (
-						<Mail threadId={id} />
+						<Mail data={mailData} />
 					)}
 				</div>
 			</div>

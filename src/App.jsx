@@ -8,11 +8,13 @@ import { useAuth } from "./store/auth";
 function App() {
 	const navigate = useNavigate();
 	const { isLoggedIn, login, logout } = useAuth();
-	// useEffect(() => {
-	// 	if (!isLoggedIn) {
-	// 		navigate("/signup");
-	// 	}
-	// }, [navigate, isLoggedIn]);
+	useEffect(() => {
+		if (!isLoggedIn) {
+			navigate("/signup");
+		} else {
+			navigate('/home')
+		}
+	}, [navigate, isLoggedIn]);
 
 	useEffect(() => {
 		if (JSON.parse(localStorage.getItem("UserId"))) {

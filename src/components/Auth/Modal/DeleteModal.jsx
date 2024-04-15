@@ -7,7 +7,7 @@ export default function DeleteModal() {
 	const [openModal, setOpenModal] = useState(false);
 	const navigate = useNavigate();
 
-	const handleLogout = () => {
+	const handleDelete = () => {
 		setOpenModal(false);
 		localStorage.removeItem("UserId");
 		navigate("/signup");
@@ -36,7 +36,7 @@ export default function DeleteModal() {
 						<div className="flex justify-center gap-4">
 							<Button
 								color="failure"
-								onClick={handleLogout}
+								onClick={handleDelete}
 							>
 								{"Yes, I'm sure"}
 							</Button>

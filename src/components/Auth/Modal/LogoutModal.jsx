@@ -3,8 +3,7 @@ import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
-export default function LogoutModal() {
-	const [openModal, setOpenModal] = useState(false);
+export default function LogoutModal({ setOpenModal, openModal }) {
 	const navigate = useNavigate();
 
 	const handleLogout = () => {
@@ -14,12 +13,6 @@ export default function LogoutModal() {
 	};
 	return (
 		<>
-			<Button
-				className="bg-blue-400"
-				onClick={() => setOpenModal(true)}
-			>
-				Toggle modal
-			</Button>
 			<Modal
 				show={openModal}
 				size="md"
