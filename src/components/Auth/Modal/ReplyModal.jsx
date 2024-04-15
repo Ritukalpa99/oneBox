@@ -1,18 +1,4 @@
-"use client";
-
-import {
-	Button,
-	Checkbox,
-	Label,
-	Modal,
-	TextInput,
-	FileInput,
-	Radio,
-	RangeSlider,
-	Select,
-	Textarea,
-	ToggleSwitch,
-} from "flowbite-react";
+import { Button, Label, Modal, TextInput, Textarea } from "flowbite-react";
 
 import { useEffect, useState } from "react";
 
@@ -31,6 +17,28 @@ export default function ReplyModal({ data }) {
 		setBody("");
 	}
 
+	const submitForm = async (formBody) => {
+		const token = JSON.parse(localStorage.getItem("UserId"));
+		try {
+			const res = await fetch(
+				`${import.meta.env.VITE_POST_MAIL}:${data.threadId}`,
+				{
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify(formBody),
+				}
+			);
+			if (!res.ok) {
+				throw new Error("Error is response");
+			}
+			const data = await res.json();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	useEffect(() => {
 		setToEmail(data.fromEmail);
 	}, [data.fromEmail]);
@@ -39,10 +47,15 @@ export default function ReplyModal({ data }) {
 		event.preventDefault();
 		setOpenModal(false);
 		onCloseModal();
-		alert("form submitted");
-		const data = {
-
-		}
+		// alert("form submitted");
+		const formData = {
+			toEmail,
+			fromEmail,
+			subject,
+			body,
+			...data,
+		};
+		submitForm(formData);
 	};
 	return (
 		<>

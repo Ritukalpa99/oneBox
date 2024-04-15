@@ -20,7 +20,6 @@ export default function SignupComp() {
 		if (!jwt) return;
 		console.log("Inside here");
 		localStorage.setItem("UserId", JSON.stringify(jwt));
-		alert("User logged in");
 		navigate("/home");
 	}, [jwt]);
 
